@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://xhqd3p7vgf2y"]
+
+[ext_resource type="Script" uid="uid://coyg1f0wfs080" path="res://player/scripts/player.gd" id="1_rkbax"]
+[ext_resource type="Script" uid="uid://dkrswc7quumoo" path="res://player/states/idle.gd" id="3_yw30f"]
+[ext_resource type="Script" uid="uid://brqrp60mkuybk" path="res://player/states/jump.gd" id="4_qjkh3"]
+[ext_resource type="Script" uid="uid://0bmgu28sq47j" path="res://player/states/run.gd" id="4_yw30f"]
+[ext_resource type="Script" uid="uid://ck2t4g1co3wmm" path="res://player/states/fall.gd" id="5_g6k8r"]
+[ext_resource type="Script" uid="uid://bqml61q4ei2en" path="res://player/states/crouch.gd" id="6_boad6"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_boad6"]
+size = Vector2(15, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rabhx"]
+size = Vector2(9.5, 13.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boad6"]
+size = Vector2(9.5, 7.75)
+
+[node name="Player" type="CharacterBody2D" unique_id=148947363]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_rkbax")
+move_speed = null
+jump_velocity = null
+
+[node name="States" type="Node" parent="." unique_id=501519395]
+
+[node name="Idle" type="Node" parent="States" unique_id=1916767725]
+unique_name_in_owner = true
+script = ExtResource("3_yw30f")
+metadata/_custom_type_script = "uid://yv20rfmoj730"
+
+[node name="Run" type="Node" parent="States" unique_id=9174787]
+unique_name_in_owner = true
+script = ExtResource("4_yw30f")
+metadata/_custom_type_script = "uid://yv20rfmoj730"
+
+[node name="Jump" type="Node" parent="States" unique_id=695684595]
+unique_name_in_owner = true
+script = ExtResource("4_qjkh3")
+
+[node name="Fall" type="Node" parent="States" unique_id=172533868]
+unique_name_in_owner = true
+script = ExtResource("5_g6k8r")
+coyote_time = 0.125
+
+[node name="Crouch" type="Node" parent="States" unique_id=1773410745]
+unique_name_in_owner = true
+script = ExtResource("6_boad6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1824337444]
+position = Vector2(0, -11)
+texture = SubResource("PlaceholderTexture2D_boad6")
+
+[node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=911314170]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_rabhx")
+
+[node name="CollisionCrouch" type="CollisionShape2D" parent="." unique_id=2021677912]
+position = Vector2(0, -4.125)
+shape = SubResource("RectangleShape2D_boad6")
+disabled = true
+
+[node name="Label" type="Label" parent="." unique_id=283049298]
+offset_left = -20.0
+offset_top = -45.0
+offset_right = 20.0
+offset_bottom = -22.0
+theme_override_font_sizes/font_size = 12
+text = "Lable"
+
+[node name="Debug jump indicator" type="Node2D" parent="." unique_id=1167808988]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Debug jump indicator" unique_id=476081937]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Debug jump indicator" unique_id=1476962828]
+
+[node name="OneWayPlatRC" type="RayCast2D" parent="." unique_id=153619418]
+position = Vector2(0, -1)
+target_position = Vector2(0, 4)
+collision_mask = 2
+
+[node name="OneWayPlatRC2" type="RayCast2D" parent="." unique_id=871415431]
+position = Vector2(0, -1)
+target_position = Vector2(-7, 2)
+collision_mask = 2
+
+[node name="OneWayPlatRC3" type="RayCast2D" parent="." unique_id=186698610]
+position = Vector2(0, -1)
+target_position = Vector2(7, 2)
+collision_mask = 2

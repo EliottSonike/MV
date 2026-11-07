@@ -1,0 +1,9 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Gros binaires (>100 Mo, refusés par GitHub)
+/addons/ziva_agent/
+
+# Réglages locaux
+.claude/settings.local.json
